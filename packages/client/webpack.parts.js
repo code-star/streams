@@ -1,4 +1,9 @@
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const CleanWebpackPlugin = require("clean-webpack-plugin");
+const GitRevisionPlugin = require("git-revision-webpack-plugin");
+const UglifyWebpackPlugin = require("uglifyjs-webpack-plugin");
+const path = require("path");
 
 exports.devServer = ({ host, port } = {}) => ({
   devServer: {
@@ -16,13 +21,23 @@ exports.devServer = ({ host, port } = {}) => ({
       poll: 1000,
     },
 
-    contentBase: './dist',
+    contentBase: './build',
     hot: true
+  },
+});
+
+exports.output = () => ({
+  output: {
+    path: path.join(__dirname, './build'),
+    filename: 'streams-client.js',
   },
 });
 
 exports.plugins = () => ({
   plugins: [
+    new HtmlWebpackPlugin({
+      title: "CodeStar Streams Client",
+    }),
     new webpack.HotModuleReplacementPlugin()
   ],
 });
@@ -38,5 +53,23 @@ exports.loadJavaScript = ({ include, exclude } = {}) => ({
         use: "babel-loader",
       },
     ],
+  },
+});
+
+exports.clean = path => ({
+  plugins: [new CleanWebpackPlugin([path])],
+});
+
+exports.attachRevision = () => ({
+  plugins: [
+    new webpack.BannerPlugin({
+      banner: new GitRevisionPlugin().version(),
+    }),
+  ],
+});
+
+exports.minifyJavaScript = () => ({
+  optimization: {
+    minimizer: [new UglifyWebpackPlugin({ sourceMap: true })],
   },
 });
