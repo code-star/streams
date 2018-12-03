@@ -9,7 +9,8 @@ const PATHS = {
 };
 
 const commonConfig = merge([
-
+  parts.plugins(),
+  parts.loadJavaScript({ include: PATHS.app }),
 ]);
 
 const productionConfig = merge([

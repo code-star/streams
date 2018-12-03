@@ -1,3 +1,5 @@
+const webpack = require("webpack");
+
 exports.devServer = ({ host, port } = {}) => ({
   devServer: {
     stats: "errors-only",
@@ -19,3 +21,22 @@ exports.devServer = ({ host, port } = {}) => ({
   },
 });
 
+exports.plugins = () => ({
+  plugins: [
+    new webpack.HotModuleReplacementPlugin()
+  ],
+});
+
+exports.loadJavaScript = ({ include, exclude } = {}) => ({
+  module: {
+    rules: [
+      {
+        test: /\.js$/,
+        include,
+        exclude,
+
+        use: "babel-loader",
+      },
+    ],
+  },
+});
