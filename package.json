@@ -1,0 +1,15 @@
+{
+  "name": "root",
+  "version": "0.0.0",
+  "description": "CodeStar Streams",
+  "scripts": {
+    "test": "lerna run test --stream",
+    "remove-packages": "lerna run remove-packages --stream",
+    "install-packages": "lerna run install-packages --stream",
+    "ci": "lerna run ci --stream"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^3.5.0"
+  }
+}
