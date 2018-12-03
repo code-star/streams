@@ -1,7 +1,7 @@
 {
-  "name": "streams",
+  "name": "codestar-streams",
   "version": "0.0.0",
-  "description": "CodeStar Streams",
+  "description": "Codestar Streams",
   "scripts": {
     "test": "lerna run test --stream",
     "build": "lerna run build --stream",
