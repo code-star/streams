@@ -1,0 +1,19 @@
+{
+  "name": "root",
+  "version": "0.0.0",
+  "description": "CodeStar Streams",
+  "scripts": {
+    "build": "lerna run build --stream",
+    "remove-packages": "lerna run remove-packages --stream",
+    "install-packages": "lerna run install-packages --stream",
+    "release": "lerna publish",
+    "test": "lerna run test --stream",
+    "lint": "lerna run --parallel lint",
+    "lint-fix": "lerna run --parallel lint-fix",
+    "ci": "lerna run ci --stream"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "lerna": "^3.5.0"
+  }
+}
