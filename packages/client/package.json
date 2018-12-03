@@ -4,7 +4,8 @@
   "description": "CodeStar Streams Client",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development",
+    "start": "nodemon --watch webpack.config.js --watch webpack.parts.js --exec \"webpack-dev-server --mode development\"",
+    "build": "webpack --mode production",
     "test": "echo \"No test specified\" && exit 0",
     "remove-packages": "rm -rf node_modules package-lock.json",
     "install-packages": "npm install",
@@ -21,7 +22,8 @@
     "react-hot-loader": "^4.3.12",
     "webpack": "^4.26.1",
     "webpack-cli": "^3.1.2",
-    "webpack-dev-server": "^3.1.10"
+    "webpack-dev-server": "^3.1.10",
+    "webpack-merge": "^4.1.4"
   },
   "dependencies": {
     "react": "^16.6.3",
