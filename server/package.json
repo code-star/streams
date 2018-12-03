@@ -1,15 +1,13 @@
 {
   "name": "server",
-  "version": "1.0.0",
-  "description": "",
+  "version": "0.0.0",
+  "description": "CodeStar Streams Server",
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js",
     "test": "echo \"No test specified\" && exit 0"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.1.6",
     "@babel/node": "^7.0.0",
