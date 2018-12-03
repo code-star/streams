@@ -1,4 +1,4 @@
-# Streams Server
+# CodeStar Streams Server
 
 ## Scripts
 
