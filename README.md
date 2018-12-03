@@ -1,8 +1,10 @@
-# CodeStar Streams
+# Codestar Streams
+
+> Codestar Streams implements Codestar Streaming Platform Front-end
 
 ## Server
 
-- Streams Server is an Express Server running on Node
+- Codestar Streams Server is an Express Server running on Node
 
 ## License
 

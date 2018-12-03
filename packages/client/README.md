@@ -1,4 +1,6 @@
-# CodeStar Streams Client
+# Codestar Streams Client
+
+> Codestar Streams Client implements a React Client
 
 ## Scripts
 
