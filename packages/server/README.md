@@ -1,4 +1,6 @@
-# CodeStar Streams Server
+# Codestar Streams Server
+
+> Codestar Streams Server implements an Express Server
 
 ## Scripts
 

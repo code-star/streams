@@ -1,7 +1,7 @@
 {
-  "name": "streams-client",
+  "name": "codestar-streams-client",
   "version": "0.0.0",
-  "description": "CodeStar Streams Client",
+  "description": "Codestar Streams Client",
   "main": "index.js",
   "scripts": {
     "start": "nodemon --watch webpack.config.js --watch webpack.parts.js --exec \"webpack-dev-server --env development\"",

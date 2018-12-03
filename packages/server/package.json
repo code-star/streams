@@ -1,7 +1,7 @@
 {
-  "name": "streams-server",
+  "name": "codestar-streams-server",
   "version": "0.0.0",
-  "description": "CodeStar Streams Server",
+  "description": "Codestar Streams Server",
   "main": "index.js",
   "scripts": {
     "start": "nodemon --exec babel-node src/index.js",
