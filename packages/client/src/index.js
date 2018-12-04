@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
 import HomePage from './components/pages/HomePage';
 import GoogleMapReactPage from './components/pages/GoogleMapReactPage';
 import ReactGoogleMapsPage from './components/pages/ReactGoogleMapsPage';
+import ReactLeafletPage from './components/pages/ReactLeafletPage';
 
 function addDivWithIdToBody() {
   const appElement = document.createElement("div");
@@ -20,6 +21,7 @@ const App = () => {
         <Route exact path="/" component={HomePage} />
         <Route path="/google-map-react" component={GoogleMapReactPage} />
         <Route path="/react-google-maps" component={ReactGoogleMapsPage} />
+        <Route path="/react-leaflet" component={ReactLeafletPage} />
       </div>
     </Router>
   );

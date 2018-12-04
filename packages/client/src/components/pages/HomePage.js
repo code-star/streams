@@ -11,6 +11,9 @@ const HomePage = () => {
         <li>
           <Link to="/react-google-maps">ReactGoogleMaps</Link>
         </li>
+        <li>
+          <Link to="/react-leaflet">ReactLeaflet</Link>
+        </li>
       </ul>
     </div>
   )
