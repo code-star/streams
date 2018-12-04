@@ -12,10 +12,3 @@ before_script:
   - npm run build
 script:
   - npm run ci
-deploy:
-  - provider: pages
-    skip_cleanup: true
-    github_token: $GITHUB_TOKEN
-    target_branch: master
-    local_dir: packages/client/build/
-    fqdn: streams.codestar.nl
