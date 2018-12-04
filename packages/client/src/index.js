@@ -18,7 +18,8 @@ const App = () => {
   return (
     <Router>
       <div>
-        <Route exact path="/" component={HomePage} />
+        {/* <Route exact path="/" component={HomePage} /> */}
+        <Route exact path="/" component={GoogleMapReactPage} />
         <Route path="/google-map-react" component={GoogleMapReactPage} />
         <Route path="/react-google-maps" component={ReactGoogleMapsPage} />
         <Route path="/react-leaflet" component={ReactLeafletPage} />
