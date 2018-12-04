@@ -1,17 +1,30 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import HomePage from './components/pages/HomePage';
+import GoogleMapReactPage from './components/pages/GoogleMapReactPage';
+import ReactGoogleMapsPage from './components/pages/ReactGoogleMapsPage';
 
-const appElement = document.createElement("div");
-appElement.id = 'app';
-document.body.appendChild(appElement);
+function addDivWithIdToBody() {
+  const appElement = document.createElement("div");
+  appElement.id = 'app';
+  document.body.appendChild(appElement);
+}
 
-const title = 'CodeStar Streams Client';
+addDivWithIdToBody()
 
-console.log('process.env', process.env)
+const App = () => {
+  return (
+    <Router>
+      <div>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/google-map-react" component={GoogleMapReactPage} />
+        <Route path="/react-google-maps" component={ReactGoogleMapsPage} />
+      </div>
+    </Router>
+  );
+}
 
-ReactDOM.render(
-  <div>{title}</div>,
-  document.getElementById('app')
-);
+ReactDOM.render(<App />, document.getElementById('app'));
 
 module.hot.accept();

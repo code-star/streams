@@ -36,7 +36,7 @@ exports.output = () => ({
 exports.plugins = () => ({
   plugins: [
     new HtmlWebpackPlugin({
-      title: "CodeStar Streams Client",
+      title: "Codestar Streams Client",
     }),
     new webpack.HotModuleReplacementPlugin()
   ],

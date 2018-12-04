@@ -1,6 +1,5 @@
 const path = require("path");
 const merge = require("webpack-merge");
-
 const parts = require("./webpack.parts");
 
 const PATHS = {
