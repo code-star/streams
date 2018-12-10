@@ -1,8 +1,30 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import GoogleMapReact from 'google-map-react';
+import Icon from '@material-ui/core/Icon';
+import SvgIcon from '@material-ui/core/SvgIcon';
+import Marker from './Marker'
 
-const AnyReactComponent = ({ text }) => <div>{text}</div>;
+const SvgIconComponent = ({ text }) => (
+  <div>
+    <SvgIcon>
+      <path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z" />
+    </SvgIcon>
+    {text}
+  </div>
+);
+
+const MarkerComponent = () => (
+  <div>
+    <Marker
+      text="Kreyser Avrora"
+      label={true}
+      active={true}
+      lat={59.95}
+      lng={30.33}
+    />
+  </div>
+);
 
 class SimpleMap extends React.Component {
   constructor(props) {
@@ -26,7 +48,7 @@ class SimpleMap extends React.Component {
           defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
         >
-          <AnyReactComponent
+          <MarkerComponent
             lat={59.955413}
             lng={30.337844}
             text={'Kreyser Avrora'}

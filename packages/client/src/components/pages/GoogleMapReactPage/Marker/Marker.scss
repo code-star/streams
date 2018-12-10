@@ -1,0 +1,33 @@
+.marker {
+    cursor: pointer;
+
+    &__body {
+        fill: #6f6f6f;
+
+        &--ema {
+            fill: #09c;
+        }
+    }
+
+    &--active {
+        z-index: 2;
+    }
+
+    &--active &__body {
+        fill: #609;
+    }
+
+    &__text {
+        display: none;
+        position: absolute;
+        left: -40px;
+        right: -40px;
+        text-align: center;
+        // font-family:
+        // font-size:
+    }
+
+    &--active &__text {
+        display: block;
+    }
+}
