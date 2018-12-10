@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 
 const HomePage = () => {
   return (
@@ -19,4 +19,4 @@ const HomePage = () => {
   )
 }
 
-export default HomePage;
+export default HomePage

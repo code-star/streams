@@ -24,18 +24,18 @@ const Marker = ({ text, active, label }) => (
             {text}
         </div>
     </div>
-);
+)
 
 Marker.propTypes = {
   text: string,
   label: bool,
   active: bool
-};
+}
 
 Marker.defaultProps = {
   text: '',
   label: false,
   active: false
-};
+}
 
-export default Marker;
+export default Marker
