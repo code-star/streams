@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const GitRevisionPlugin = require("git-revision-webpack-plugin");
 const UglifyWebpackPlugin = require("uglifyjs-webpack-plugin");
+const DotenvPlugin = require('dotenv-webpack')
 const path = require("path");
 
 exports.devServer = ({ host, port } = {}) => ({
@@ -35,6 +36,9 @@ exports.output = () => ({
 
 exports.plugins = () => ({
   plugins: [
+    new DotenvPlugin({
+      path: path.resolve(__dirname, './.env')
+    }),
     new HtmlWebpackPlugin({
       title: "Codestar Streams Client",
     }),
@@ -71,5 +75,49 @@ exports.attachRevision = () => ({
 exports.minifyJavaScript = () => ({
   optimization: {
     minimizer: [new UglifyWebpackPlugin({ sourceMap: true })],
+  },
+});
+
+exports.loadCSS = ({ include, exclude } = {}) => ({
+  module: {
+    rules: [
+        {
+          test: /\.css$/,
+          include,
+          exclude,
+
+          use: [
+            "style-loader",
+            "css-loader",
+            {
+              loader: "postcss-loader",
+              options: {
+                plugins: () => [require("postcss-cssnext")()],
+              },
+            },
+          ],
+        },
+        {
+          test: /\.less$/,
+          use: ["style-loader", "css-loader", "less-loader"],
+        },
+        {
+          test: /\.scss$/,
+          use: ["style-loader", "css-loader", "sass-loader"],
+        },
+        {
+          test: /\.styl$/,
+          use: [
+            "style-loader",
+            "css-loader",
+            {
+              loader: "stylus-loader",
+              options: {
+                use: [require("yeticss")],
+              },
+            },
+          ],
+        },
+    ],
   },
 });
