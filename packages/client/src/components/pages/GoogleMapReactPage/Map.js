@@ -20,11 +20,8 @@ class Map extends React.Component {
     const {lat, lng} = list[0]
 
     this.state = {
-      center: {
-        lat: lat,
-        lng: lng
-      },
-      zoom: 11,
+      center: undefined,
+      zoom: undefined,
       ready: false
     }
   }
@@ -132,7 +129,8 @@ class Map extends React.Component {
   }
 
   render() {
-    const { items } = this.props
+    const { initialCenter, initialZoom, apiKey, showLimit, items } = this.props;
+    const { center, zoom } = this.state;
 
     return (
       <div style={{ height: '100vh', width: '100%' }}
@@ -141,8 +139,8 @@ class Map extends React.Component {
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.API_KEY }}
           onGoogleApiLoaded={this.onReady}
-          defaultCenter={this.state.center}
-          defaultZoom={this.state.zoom}
+          defaultCenter={initialCenter}
+          defaultZoom={initialZoom}
           ref={(node) => (this.maps = node)}
         >
           {
@@ -164,6 +162,13 @@ class Map extends React.Component {
 }
 
 Map.propTypes = {
+  initialCenter: shape({
+    lat: number,
+    lng: number
+  }),
+  initialZoom: number,
+  apiKey: string,
+  showLimit: number,
   items: arrayOf(
     shape({
       id: string,
@@ -171,12 +176,17 @@ Map.propTypes = {
       lng: number,
     })
   ),
-  showLimit: number
 }
 
 Map.defaultProps = {
+  initialCenter: {
+    lat: list[0].lat,
+    lng: list[0].lng
+  },
+  initialZoom: 11,
+  apiKey: process.env.API_KEY,
+  showLimit: 4,
   items: list,
-  showLimit: 4
 }
 
 export default Map
