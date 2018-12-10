@@ -3,15 +3,15 @@ import { arrayOf, shape, number, string } from 'prop-types'
 import GoogleMapReact from 'google-map-react'
 import Marker from '../../patterns/atoms/map/Marker'
 import { list } from '../../../data/stations.js'
-import { fitBounds } from 'google-map-react/utils';
+import { fitBounds } from 'google-map-react/utils'
 
-const K_MARGIN_TOP = 60;
-const K_MARGIN_RIGHT = 30;
-const K_MARGIN_BOTTOM = 30;
-const K_MARGIN_LEFT = 30;
-const SEARCH_BOX_WIDTH = 330;
-const LATITUDE = 'Latitude';
-const LONGITUDE = 'Longitude';
+const K_MARGIN_TOP = 60
+const K_MARGIN_RIGHT = 30
+const K_MARGIN_BOTTOM = 30
+const K_MARGIN_LEFT = 30
+const SEARCH_BOX_WIDTH = 330
+const LATITUDE = 'Latitude'
+const LONGITUDE = 'Longitude'
 
 class Map extends React.Component {
   constructor(props) {
@@ -42,50 +42,50 @@ class Map extends React.Component {
   }
 
   updateCenterZoom(props, selectedItem) {
-      console.log('~updateCenterZoom~', props, selectedItem);
+      console.log('~updateCenterZoom~', props, selectedItem)
 
       if (!this.maps) {
-          return;
+          return
       }
 
       if (props.items.length === 0) {
-          return;
+          return
       }
 
       try {
-          const { showLimit } = props;
-          const maps = this.maps.maps_;
+          const { showLimit } = props
+          const maps = this.maps.maps_
 
-          const height = this.rootNode.clientHeight;
-          const width = this.rootNode.clientWidth;
+          const height = this.rootNode.clientHeight
+          const width = this.rootNode.clientWidth
 
           const size = {
               width: (width >= 600 ? width - SEARCH_BOX_WIDTH : width),
               height: height
-          };
+          }
 
-          console.log('~size~', size);
+          console.log('~size~', size)
 
-          let { center: prevCenter, zoom } = this.state;
-          let center = Object.assign({}, prevCenter); // fresh reference
+          let { center: prevCenter, zoom } = this.state
+          let center = Object.assign({}, prevCenter) // fresh reference
 
           // center selected agent
           if (selectedItem) {
               center = {
                   lat: selectedItem[LATITUDE] * 1,
                   lng: selectedItem[LONGITUDE] * 1
-              };
+              }
 
-              zoom = 15;
+              zoom = 15
 
           // center based on group of agents
           } else {
-              const latLngBounds = new maps.LatLngBounds();
+              const latLngBounds = new maps.LatLngBounds()
 
               props.items.slice(0, showLimit).forEach((item) => {
-                  const latLng = new maps.LatLng(item[LATITUDE] * 1, item[LONGITUDE] * 1);
-                  latLngBounds.extend(latLng);
-              });
+                  const latLng = new maps.LatLng(item[LATITUDE] * 1, item[LONGITUDE] * 1)
+                  latLngBounds.extend(latLng)
+              })
 
               const bounds = {
                   ne: {
@@ -96,37 +96,37 @@ class Map extends React.Component {
                       lat: latLngBounds.getSouthWest().lat(),
                       lng: latLngBounds.getSouthWest().lng()
                   }
-              };
+              }
 
               // if all lat/lngs have the same coordinates
               if (bounds.ne.lat === bounds.sw.lat && bounds.ne.lng === bounds.sw.lng) {
                   center = {
                       lat: bounds.ne.lat,
                       lng: bounds.ne.lng
-                  };
-                  zoom = 15;
+                  }
+                  zoom = 15
 
               // else calculate center of lat /lngs
               } else {
-                  let fb = fitBounds(bounds, size);
-                  center = fb.center;
-                  zoom = fb.zoom;
+                  let fb = fitBounds(bounds, size)
+                  center = fb.center
+                  zoom = fb.zoom
               }
           }
 
           // consider offset for min-width 600px
           if (width >= 600) {
-              const widthOfPanel = SEARCH_BOX_WIDTH;
-              const degreesPerTile = 360 / Math.pow(2, zoom);
-              const degreesPerPx = degreesPerTile / 256;
-              const degreesForPanel = degreesPerPx * widthOfPanel;
-              center.lng = center.lng - degreesForPanel / 2;
+              const widthOfPanel = SEARCH_BOX_WIDTH
+              const degreesPerTile = 360 / Math.pow(2, zoom)
+              const degreesPerPx = degreesPerTile / 256
+              const degreesForPanel = degreesPerPx * widthOfPanel
+              center.lng = center.lng - degreesForPanel / 2
           }
 
-          this.setState({ center, zoom });
+          this.setState({ center, zoom })
 
       } catch(e) {
-          console.error(e); // eslint-disable-line no-console
+          console.error(e)
       }
 
   }
