@@ -77,3 +77,47 @@ exports.minifyJavaScript = () => ({
     minimizer: [new UglifyWebpackPlugin({ sourceMap: true })],
   },
 });
+
+exports.loadCSS = ({ include, exclude } = {}) => ({
+  module: {
+    rules: [
+        {
+          test: /\.css$/,
+          include,
+          exclude,
+
+          use: [
+            "style-loader",
+            "css-loader",
+            {
+              loader: "postcss-loader",
+              options: {
+                plugins: () => [require("postcss-cssnext")()],
+              },
+            },
+          ],
+        },
+        {
+          test: /\.less$/,
+          use: ["style-loader", "css-loader", "less-loader"],
+        },
+        {
+          test: /\.scss$/,
+          use: ["style-loader", "css-loader", "sass-loader"],
+        },
+        {
+          test: /\.styl$/,
+          use: [
+            "style-loader",
+            "css-loader",
+            {
+              loader: "stylus-loader",
+              options: {
+                use: [require("yeticss")],
+              },
+            },
+          ],
+        },
+    ],
+  },
+});
