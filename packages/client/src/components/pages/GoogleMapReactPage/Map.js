@@ -8,13 +8,25 @@ class Map extends React.Component {
     super(props)
 
     const {lat, lng} = list[0]
+
     this.state = {
       center: {
         lat: lat,
         lng: lng
       },
-      zoom: 11
+      zoom: 11,
+      ready: false
     }
+  }
+
+  componentWillReceiveProps(nextProps) {
+      if (!this.state.ready) return
+  }
+
+  onReady = () => {
+    this.setState({
+        ready: true
+    })
   }
 
   render() {
@@ -22,6 +34,7 @@ class Map extends React.Component {
       <div style={{ height: '100vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.API_KEY }}
+          onGoogleApiLoaded={this.onReady}
           defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
         >
@@ -39,7 +52,7 @@ class Map extends React.Component {
           }
         </GoogleMapReact>
       </div>
-    );
+    )
   }
 }
 
