@@ -1,5 +1,5 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from 'react'
+import { Link } from 'react-router-dom'
 import {
   Circle,
   CircleMarker,
@@ -10,7 +10,7 @@ import {
   Rectangle,
   TileLayer,
   Tooltip,
-} from 'react-leaflet';
+} from 'react-leaflet'
 
 const center = [51.505, -0.09]
 
@@ -113,4 +113,4 @@ export default ReactLeafletPage;
 //   }
 // }
 
-// export default ReactLeafletPage;
+// export default ReactLeafletPage
