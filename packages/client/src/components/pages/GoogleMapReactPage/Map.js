@@ -38,9 +38,14 @@ class Map extends React.Component {
     this.updateCenterZoom(this.props, this.props.items[0])
   }
 
-  updateCenterZoom(props, selectedItem) {
-      console.log('~updateCenterZoom~', props, selectedItem)
+  onChange = (state) => {
+      this.setState({
+          center: state.center,
+          zoom: state.zoom
+      });
+  }
 
+  updateCenterZoom(props, selectedItem) {
       if (!this.maps) {
           return
       }
@@ -60,8 +65,6 @@ class Map extends React.Component {
               width: (width >= 600 ? width - SEARCH_BOX_WIDTH : width),
               height: height
           }
-
-          console.log('~size~', size)
 
           let { center: prevCenter, zoom } = this.state
           let center = Object.assign({}, prevCenter) // fresh reference
@@ -139,9 +142,12 @@ class Map extends React.Component {
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.API_KEY }}
           onGoogleApiLoaded={this.onReady}
+          onChange={this.onChange}
+          ref={(node) => (this.maps = node)}
           defaultCenter={initialCenter}
           defaultZoom={initialZoom}
-          ref={(node) => (this.maps = node)}
+          center={center}
+          zoom={zoom}
         >
           {
             items.map((item) => (
