@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import GoogleMapReact from 'google-map-react';
 import Icon from '@material-ui/core/Icon';
 import SvgIcon from '@material-ui/core/SvgIcon';
-import Marker from './Marker'
+import Marker from '../../Atoms/Map/Marker'
 
 const SvgIconComponent = ({ text }) => (
   <div>
