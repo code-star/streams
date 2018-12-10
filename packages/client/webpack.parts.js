@@ -3,6 +3,7 @@ const HtmlWebpackPlugin = require("html-webpack-plugin");
 const CleanWebpackPlugin = require("clean-webpack-plugin");
 const GitRevisionPlugin = require("git-revision-webpack-plugin");
 const UglifyWebpackPlugin = require("uglifyjs-webpack-plugin");
+const DotenvPlugin = require('dotenv-webpack')
 const path = require("path");
 
 exports.devServer = ({ host, port } = {}) => ({
@@ -35,6 +36,9 @@ exports.output = () => ({
 
 exports.plugins = () => ({
   plugins: [
+    new DotenvPlugin({
+      path: path.resolve(__dirname, './.env')
+    }),
     new HtmlWebpackPlugin({
       title: "Codestar Streams Client",
     }),
