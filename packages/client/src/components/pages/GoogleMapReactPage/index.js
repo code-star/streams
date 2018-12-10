@@ -4,23 +4,13 @@ import GoogleMapReact from 'google-map-react';
 import Icon from '@material-ui/core/Icon';
 import SvgIcon from '@material-ui/core/SvgIcon';
 import Marker from '../../patterns/atoms/map/Marker'
+import {list} from '../../../data/stations.js'
 
-const SvgIconComponent = ({ text }) => (
-  <div>
-    <SvgIcon>
-      <path d="M20 12l-1.41-1.41L13 16.17V4h-2v12.17l-5.58-5.59L4 12l8 8 8-8z" />
-    </SvgIcon>
-    {text}
-  </div>
-);
-
-const lat = 52.09
-const lng = 5.11
-
-const MarkerComponent = () => (
+console.log('~list~', list);
+const MarkerComponent = ({lat, lng, text}) => (
   <div>
     <Marker
-      text="some place"
+      text={text}
       label={true}
       active={true}
       lat={lat}
@@ -33,6 +23,7 @@ class SimpleMap extends React.Component {
   constructor(props) {
     super(props)
 
+    const {lat, lng} = list[0]
     this.state = {
       center: {
         lat: lat,
@@ -43,6 +34,7 @@ class SimpleMap extends React.Component {
   }
 
   render() {
+    console.log('~this.state.center~', this.state.center);
     return (
       // Important! Always set the container height explicitly
       <div style={{ height: '100vh', width: '100%' }}>
@@ -51,11 +43,16 @@ class SimpleMap extends React.Component {
           defaultCenter={this.state.center}
           defaultZoom={this.state.zoom}
         >
-          <MarkerComponent
-            lat={lat}
-            lng={lng}
-            text={'some place'}
-          />
+          {
+            list.map((item) => (
+              <MarkerComponent
+                key={item.id}
+                lat={item.lat}
+                lng={item.lng}
+                text={'some place'}
+              />
+            ))
+          }
         </GoogleMapReact>
       </div>
     );
