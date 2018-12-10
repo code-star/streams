@@ -10,8 +10,8 @@ const K_MARGIN_RIGHT = 30
 const K_MARGIN_BOTTOM = 30
 const K_MARGIN_LEFT = 30
 const SEARCH_BOX_WIDTH = 330
-const LATITUDE = 'Latitude'
-const LONGITUDE = 'Longitude'
+const LATITUDE = 'lat'
+const LONGITUDE = 'lng'
 
 class Map extends React.Component {
   constructor(props) {
@@ -22,12 +22,47 @@ class Map extends React.Component {
     this.state = {
       center: undefined,
       zoom: undefined,
-      ready: false
+      ready: false,
+      items: this.props.items
     }
   }
 
   componentWillReceiveProps(nextProps) {
-      if (!this.state.ready) return
+      if (!this.state.ready) return;
+
+      const prevItem = this.props.items.find((item) => item.isSelected);
+      const nextItem = nextProps.items.find((item) => item.isSelected);
+
+      const prevItemId = prevItem ? prevItem.id : false;
+      const nextItemId = nextItem ? nextItem.id : false;
+
+      if (nextItemId && nextItemId !== prevItemId) {
+          this.updateCenterZoom(nextProps, nextItem);
+          return;
+      }
+
+      // update center if list length changes
+      if (nextProps.showLimit !== this.props.showLimit || (nextProps.items.length > 0 && nextProps.items.length !== this.props.items.length)) {
+          this.updateCenterZoom(nextProps);
+          return;
+      }
+
+      if (!nextItemId && nextItemId !== prevItemId) {
+          this.updateCenterZoom(nextProps);
+          return;
+      }
+  }
+
+  onClickMarker = (itemId) => {
+    const items = this.state.items
+    items
+      .map(item => {
+        item.isSelected = false
+        item.isFocussed = false
+        return item
+      })
+      .find(item => item.id === itemId).isSelected = true
+    this.setState(items)
   }
 
   onReady = () => {
@@ -69,7 +104,7 @@ class Map extends React.Component {
           let { center: prevCenter, zoom } = this.state
           let center = Object.assign({}, prevCenter) // fresh reference
 
-          // center selected agent
+          // center selected item
           if (selectedItem) {
               center = {
                   lat: selectedItem[LATITUDE] * 1,
@@ -78,7 +113,7 @@ class Map extends React.Component {
 
               zoom = 15
 
-          // center based on group of agents
+          // center based on group of items
           } else {
               const latLngBounds = new maps.LatLngBounds()
 
@@ -135,6 +170,19 @@ class Map extends React.Component {
     const { initialCenter, initialZoom, apiKey, showLimit, items } = this.props;
     const { center, zoom } = this.state;
 
+    const markers = items.slice(0, showLimit).map((item, index) => {
+        return (
+          <Marker
+            key={item.id}
+            lat={item[LATITUDE] * 1}
+            lng={item[LONGITUDE] * 1}
+            text={item.text}
+            label={true}
+            active={item.isFocussed || item.isSelected}
+          />
+        )
+    })
+
     return (
       <div style={{ height: '100vh', width: '100%' }}
         ref={(node) => (this.rootNode = node)}
@@ -142,25 +190,16 @@ class Map extends React.Component {
         <GoogleMapReact
           bootstrapURLKeys={{ key: process.env.API_KEY }}
           onGoogleApiLoaded={this.onReady}
+          onChildClick={this.onClickMarker}
           onChange={this.onChange}
           ref={(node) => (this.maps = node)}
+          margin={[K_MARGIN_TOP, K_MARGIN_RIGHT, K_MARGIN_BOTTOM, K_MARGIN_LEFT]}
           defaultCenter={initialCenter}
           defaultZoom={initialZoom}
           center={center}
           zoom={zoom}
         >
-          {
-            items.map((item) => (
-              <Marker
-                key={item.id}
-                lat={item.lat}
-                lng={item.lng}
-                text={'some place'}
-                label={true}
-                active={false}
-              />
-            ))
-          }
+          {markers}
         </GoogleMapReact>
       </div>
     )
@@ -191,7 +230,7 @@ Map.defaultProps = {
   },
   initialZoom: 11,
   apiKey: process.env.API_KEY,
-  showLimit: 4,
+  showLimit: 10,
   items: list,
 }
 
