@@ -1,0 +1,7 @@
+node_modules/*
+
+packages/client/node_modules/*
+packages/client/src/*
+
+packages/server/node_modules/*
+packages/server/src/*

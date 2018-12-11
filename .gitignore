@@ -1,5 +1,6 @@
+.DS_Store
 node_modules
-packages/client/build
-packages/client/node_modules
-packages/server/build
-packages/server/node_modules
+.cache
+.npmrc
+.storybook-static
+lerna-debug.log

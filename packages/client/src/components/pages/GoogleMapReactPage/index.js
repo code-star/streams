@@ -1,15 +1,16 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import PersistentDrawer from '../../patterns/molecules/navigation/PersistentDrawer'
 import Map from './Map'
+import Typography from '@material-ui/core/Typography';
 
 const GoogleMapReactPage = () => {
   return (
     <div>
-      <h2>Google Map React Page</h2>
-      <div>
-        <Link to="/">Back to Home Page</Link>
+      <PersistentDrawer>
+        <Link to="/"><Typography paragraph>Back to Start Page</Typography></Link>
         <Map />
-      </div>
+      </PersistentDrawer>
     </div>
   )
 }
