@@ -3,6 +3,10 @@
   "version": "0.0.0",
   "description": "Codestar Streams Server",
   "main": "index.js",
+  "engines": {
+    "npm": "6.4.1",
+    "node": "11.3.0"
+  },
   "scripts": {
     "build": "babel src -d build",
     "serve": "npm run build && node build/index.js",
