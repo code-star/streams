@@ -1,29 +1,31 @@
 .marker {
-    cursor: pointer;
+  cursor: pointer;
 
-    &__body {
-        fill: #09c;
-    }
+  &__body {
+    fill: #09c;
+  }
 
-    &--active {
-        z-index: 2;
-    }
+  &--active {
+    z-index: 2;
+  }
 
-    &--active &__body {
-        fill: #609;
-    }
+  &--active &__body {
+    fill: #609;
+  }
 
-    &__text {
-        display: none;
-        position: absolute;
-        left: -40px;
-        right: -40px;
-        text-align: center;
-        // font-family:
-        // font-size:
-    }
+  &__text {
+    position: absolute;
+    right: -40px;
+    left: -40px;
 
-    &--active &__text {
-        display: block;
-    }
+    display: none;
+
+    text-align: center;
+    // font-family:
+    // font-size:
+  }
+
+  &--active &__text {
+    display: block;
+  }
 }
