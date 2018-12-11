@@ -3,6 +3,7 @@
   "version": "0.0.0",
   "description": "Codestar Streams",
   "scripts": {
+    "start": "lerna run serve --stream",
     "test": "lerna run test --stream",
     "build": "lerna run build --stream",
     "deploy-client": "gh-pages -d packages/client/build",
