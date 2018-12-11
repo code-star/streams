@@ -3,13 +3,11 @@
   "version": "0.0.0",
   "description": "Codestar Streams Server",
   "main": "index.js",
-  "engines": {
-    "node": "~11.3.0"
-  },
   "scripts": {
     "build": "babel src -d build",
     "serve": "npm run build && node build/index.js",
-    "start": "nodemon --watch src/index.js --exec \"npm run serve\"",
+    "start:local": "nodemon --watch src/index.js --exec \"npm run serve\"",
+    "start": "npm run serve",
     "heroku-local-web": "heroku local web",
     "deploy": "git push heroku master",
     "test": "echo \"No test specified\" && exit 0",

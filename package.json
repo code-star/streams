@@ -2,9 +2,6 @@
   "name": "codestar-streams",
   "version": "0.0.0",
   "description": "Codestar Streams",
-  "engines": {
-    "node": "~11.3.0"
-  },
   "scripts": {
     "start": "lerna run serve --stream",
     "test": "lerna run test --stream",
