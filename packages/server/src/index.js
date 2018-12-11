@@ -16,6 +16,8 @@ app.get('/', (req, res) => {
   res.send({ 'test': '456' })
 })
 
-app.listen(process.env.PORT, () =>
-  console.log(`Codestar Streams Server listening on port ${process.env.PORT}!`),
+const port = process.env.PORT || 3000
+
+app.listen(port, () =>
+  console.log(`Codestar Streams Server listening on port ${port}!`),
 )
