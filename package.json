@@ -3,8 +3,6 @@
   "version": "0.0.0",
   "description": "Codestar Streams",
   "scripts": {
-    "heroku-prebuild": "echo This runs before Heroku installs your dependencies.",
-    "heroku-postbuild": "npm install",
     "start": "lerna run serve --stream",
     "test": "lerna run test --stream",
     "build": "lerna run build --stream",
@@ -44,12 +42,14 @@
     "eslint-plugin-jsx-a11y": "^6.1.2",
     "eslint-plugin-react": "^7.11.1",
     "gh-pages": "^2.0.1",
-    "husky": "^1.2.0",
-    "lerna": "^3.5.0",
     "lint-staged": "^8.1.0",
     "npm-run-all": "^4.1.5",
     "prettier": "^1.15.3",
     "stylelint": "^9.9.0",
     "stylelint-order": "^2.0.0"
+  },
+  "dependencies": {
+    "husky": "^1.2.0",
+    "lerna": "^3.6.0"
   }
 }
