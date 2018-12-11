@@ -13,7 +13,7 @@
     "lint:scss": "stylelint src/**/*.scss --fix",
     "lint:js": "eslint src/**/*.js --fix",
     "lint:staged": "lint-staged",
-    "ci": "npm-run-all build test"
+    "ci": "npm-run-all lint build test"
   },
   "license": "MIT",
   "devDependencies": {
