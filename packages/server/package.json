@@ -8,6 +8,10 @@
     "test": "echo \"No test specified\" && exit 0",
     "remove-packages": "rm -rf node_modules package-lock.json",
     "install-packages": "npm install",
+    "lint": "npm-run-all lint:scss lint:js",
+    "lint:scss": "stylelint src/**/*.scss --fix",
+    "lint:js": "eslint src/**/*.js --fix",
+    "lint:staged": "lint-staged",
     "ci": "npm-run-all test"
   },
   "license": "MIT",
