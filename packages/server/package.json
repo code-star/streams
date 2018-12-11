@@ -7,6 +7,8 @@
     "build": "babel src -d build",
     "serve": "npm run build && node build/index.js",
     "start": "nodemon --watch src/index.js --exec \"npm run serve\"",
+    "heroku-local-web": "heroku local web",
+    "deploy": "git push heroku master",
     "test": "echo \"No test specified\" && exit 0",
     "remove-packages": "rm -rf node_modules package-lock.json",
     "install-packages": "npm install",
