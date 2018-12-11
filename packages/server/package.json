@@ -5,7 +5,7 @@
   "main": "index.js",
   "engines": {
     "node": "~11.3.0"
-  }
+  },
   "scripts": {
     "build": "babel src -d build",
     "serve": "npm run build && node build/index.js",
