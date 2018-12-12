@@ -1,6 +1,6 @@
 {
   "name": "streams-client",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Streams Client",
   "main": "index.js",
   "license": "MIT",
