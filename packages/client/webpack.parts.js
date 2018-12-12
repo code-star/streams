@@ -1,17 +1,18 @@
-const webpack = require("webpack");
-const HtmlWebpackPlugin = require("html-webpack-plugin");
-const CleanWebpackPlugin = require("clean-webpack-plugin");
-const GitRevisionPlugin = require("git-revision-webpack-plugin");
-const UglifyWebpackPlugin = require("uglifyjs-webpack-plugin");
+/* eslint global-require: 0 */
+const webpack = require("webpack")
+const HtmlWebpackPlugin = require("html-webpack-plugin")
+const CleanWebpackPlugin = require("clean-webpack-plugin")
+const GitRevisionPlugin = require("git-revision-webpack-plugin")
+const UglifyWebpackPlugin = require("uglifyjs-webpack-plugin")
 const DotenvPlugin = require('dotenv-webpack')
-const path = require("path");
+const path = require("path")
 
 exports.devServer = ({ host, port } = {}) => ({
   devServer: {
     stats: "errors-only",
 
-    host: host,
-    port: port,
+    host,
+    port,
     open: true,
 
     overlay: true,
@@ -23,28 +24,40 @@ exports.devServer = ({ host, port } = {}) => ({
     },
 
     contentBase: './build',
-    hot: true
+    hot: true,
   },
-});
+})
 
 exports.output = () => ({
   output: {
     path: path.join(__dirname, './build'),
     filename: 'streams-client.js',
   },
-});
+})
 
-exports.plugins = () => ({
+exports.pluginsDevelop = () => ({
   plugins: [
     new DotenvPlugin({
-      path: path.resolve(__dirname, './.env')
+      path: path.resolve(__dirname, './.env.develop'),
     }),
     new HtmlWebpackPlugin({
       title: "Codestar Streams Client",
     }),
-    new webpack.HotModuleReplacementPlugin()
+    new webpack.HotModuleReplacementPlugin(),
   ],
-});
+})
+
+exports.pluginsRelease = () => ({
+  plugins: [
+    new DotenvPlugin({
+      path: path.resolve(__dirname, './.env.release'),
+    }),
+    new HtmlWebpackPlugin({
+      title: "Codestar Streams Client",
+    }),
+    new webpack.HotModuleReplacementPlugin(),
+  ],
+})
 
 exports.loadJavaScript = ({ include, exclude } = {}) => ({
   module: {
@@ -58,11 +71,11 @@ exports.loadJavaScript = ({ include, exclude } = {}) => ({
       },
     ],
   },
-});
+})
 
-exports.clean = path => ({
-  plugins: [new CleanWebpackPlugin([path])],
-});
+exports.clean = pathToClean => ({
+  plugins: [new CleanWebpackPlugin([pathToClean])],
+})
 
 exports.attachRevision = () => ({
   plugins: [
@@ -70,13 +83,13 @@ exports.attachRevision = () => ({
       banner: new GitRevisionPlugin().version(),
     }),
   ],
-});
+})
 
 exports.minifyJavaScript = () => ({
   optimization: {
     minimizer: [new UglifyWebpackPlugin({ sourceMap: true })],
   },
-});
+})
 
 exports.loadCSS = ({ include, exclude } = {}) => ({
   module: {
@@ -120,4 +133,4 @@ exports.loadCSS = ({ include, exclude } = {}) => ({
         },
     ],
   },
-});
+})
