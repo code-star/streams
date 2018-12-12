@@ -3,16 +3,17 @@ import { Link } from 'react-router-dom'
 import PersistentDrawer from '../../patterns/molecules/navigation/PersistentDrawer'
 import Map from './Map'
 import Typography from '@material-ui/core/Typography';
+import { startPageRoute } from '../../../routes'
 
-const GoogleMapReactPage = () => {
+const DemoReactPage = () => {
   return (
     <div>
       <PersistentDrawer>
-        <Link to="/"><Typography paragraph>Back to Start Page</Typography></Link>
+        <Link to={startPageRoute}><Typography paragraph>Back to Start Page</Typography></Link>
         <Map />
       </PersistentDrawer>
     </div>
   )
 }
 
-export default GoogleMapReactPage
+export default DemoReactPage
