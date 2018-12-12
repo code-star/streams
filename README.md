@@ -2,7 +2,7 @@
   <img width="500px" src="/logo.png">
 </p>
 
-<h1 align="center">Streams</h1>
+<h1 align="center">Codestar Streams</h1>
 
 <p align="center">Streaming Platform Demo</p>
 
