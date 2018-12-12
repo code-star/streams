@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Codestar Streams",
   "scripts": {
-    "heroku-prebuild": "echo This runs before Heroku installs your dependencies.",
+    "heroku-prebuild": "echo This runs before Heroku installs your dependencies",
     "heroku-postbuild": "npm run install-packages",
     "start": "lerna run serve --stream",
     "test": "lerna run test --stream",
