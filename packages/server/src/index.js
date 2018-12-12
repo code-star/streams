@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 app.get('/', (req, res) => {
-  res.send({ 'test': '456' })
+  res.send({ 'test': '123' })
 })
 
 const port = process.env.PORT || 3000
