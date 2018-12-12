@@ -18,7 +18,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Map from '@material-ui/icons/Map'
 import { Link } from 'react-router-dom'
-
+import { demoPageRoute } from '../../../routes'
 import { drawerWidth, styles } from './utility'
 
 class PersistentDrawer extends React.Component {
@@ -84,7 +84,7 @@ class PersistentDrawer extends React.Component {
             {['Demo'].map((text, index) => (
               <ListItem button key={text}>
                 <ListItemIcon><Map /></ListItemIcon>
-                <Link to="/google-map-react"><ListItemText primary={text} /></Link>
+                <Link to={demoPageRoute}><ListItemText primary={text} /></Link>
               </ListItem>
             ))}
           </List>
