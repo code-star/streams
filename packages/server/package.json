@@ -1,13 +1,13 @@
 {
   "name": "streams-server",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Streams Server",
   "main": "index.js",
   "license": "MIT",
   "files": [
     "build"
   ],
-   "keywords": [
+  "keywords": [
     "streams-server"
   ],
   "scripts": {
@@ -29,7 +29,6 @@
     "lint:staged": "lint-staged",
     "ci": "npm-run-all lint build test"
   },
-  "license": "MIT",
   "dependencies": {
     "@babel/cli": "^7.2.0",
     "@babel/core": "^7.2.0",
