@@ -1,7 +1,7 @@
 import React from 'react'
 import { arrayOf, shape, number, string } from 'prop-types'
 import GoogleMapReact from 'google-map-react'
-import Marker from '../../patterns/atoms/map/Marker'
+import Marker from '../../atoms/map/Marker'
 import list from '../../../data/stations.js'
 import { fitBounds } from 'google-map-react/utils'
 
