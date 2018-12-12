@@ -31,7 +31,7 @@ exports.devServer = ({ host, port } = {}) => ({
 exports.output = () => ({
   output: {
     path: path.join(__dirname, './build'),
-    filename: 'streams-client.js',
+    filename: "streams-client.[hash:4].js",
   },
 })
 
