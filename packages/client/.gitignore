@@ -1,2 +1,4 @@
-.env
+.env.develop
+.env.release
 build
+.npmrc
