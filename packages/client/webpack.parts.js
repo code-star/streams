@@ -41,7 +41,7 @@ exports.pluginsDevelop = () => ({
       path: path.resolve(__dirname, './.env.develop'),
     }),
     new HtmlWebpackPlugin({
-      title: "Codestar Streams Client",
+      title: "Streams Client",
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],
@@ -53,7 +53,7 @@ exports.pluginsRelease = () => ({
       path: path.resolve(__dirname, './.env.release'),
     }),
     new HtmlWebpackPlugin({
-      title: "Codestar Streams Client",
+      title: "Streams Client",
     }),
     new webpack.HotModuleReplacementPlugin(),
   ],

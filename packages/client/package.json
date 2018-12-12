@@ -1,8 +1,15 @@
 {
   "name": "streams-client",
   "version": "0.0.0",
-  "description": "Codestar Streams Client",
+  "description": "Streams Client",
   "main": "index.js",
+  "license": "MIT",
+  "files": [
+    "build"
+  ],
+   "keywords": [
+    "streams-client"
+  ],
   "scripts": {
     "start": "nodemon --watch webpack.config.js --watch webpack.parts.js --exec \"webpack-dev-server --env development\"",
     "serve": "echo \"No serve specified\" && exit 0",

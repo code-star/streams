@@ -1,8 +1,15 @@
 {
   "name": "streams-server",
   "version": "0.0.0",
-  "description": "Codestar Streams Server",
+  "description": "Streams Server",
   "main": "index.js",
+  "license": "MIT",
+  "files": [
+    "build"
+  ],
+   "keywords": [
+    "streams-server"
+  ],
   "scripts": {
     "start:local": "nodemon --watch src/index.js --exec \"npm run serve\"",
     "start": "npm run serve",

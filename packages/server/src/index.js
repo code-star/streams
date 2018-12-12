@@ -19,5 +19,5 @@ app.get('/', (req, res) => {
 const port = process.env.PORT || 3000
 
 app.listen(port, () =>
-  console.log(`Codestar Streams Server listening on port ${port}!`),
+  console.log(`Streams Server listening on port ${port}!`),
 )
