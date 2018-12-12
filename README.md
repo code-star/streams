@@ -1,8 +1,8 @@
 <p align="center">
-  <img width="300px" src="/logo.png">
+  <img width="500px" src="/logo.png">
 </p>
 
-<h1 align="center">Codestar Streams</h1>
+<h1 align="center">Streams</h1>
 
 <p align="center">Streaming Platform Demo</p>
 
@@ -35,10 +35,6 @@
 ## Status
 
 **⚠️ This project is a work in progress and is not ready for production use yet!**
-
-## Server
-
-- Codestar Streams Server is an Express Server running on Node
 
 ## License
 
