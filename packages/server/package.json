@@ -12,6 +12,7 @@
   ],
   "scripts": {
     "start": "nodemon src/index.js",
+    "serve": "npm start",
     "release": "npm publish",
     "uninstall-packages": "rm -rf node_modules package-lock.json",
     "install-packages": "npm i",
