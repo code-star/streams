@@ -66,6 +66,7 @@
     "leaflet": "^1.3.4",
     "primer": "^10.10.2",
     "react": "^16.6.3",
+    "react-apollo": "2.3.2",
     "react-dom": "^16.6.3",
     "react-leaflet": "^2.1.2",
     "react-router-dom": "^4.3.1"
