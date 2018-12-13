@@ -1,9 +1,10 @@
+/* eslint-disable */
 import React from 'react'
 import { arrayOf, shape, number, string } from 'prop-types'
 import GoogleMapReact from 'google-map-react'
-import Marker from '../../atoms/map/Marker'
-import list from '../../../data/stations.js'
 import { fitBounds } from 'google-map-react/utils'
+import Marker from '../../atoms/map/Marker'
+import list from '../../../data/stations'
 
 const K_MARGIN_TOP = 60
 const K_MARGIN_RIGHT = 30
@@ -235,3 +236,4 @@ Map.defaultProps = {
 }
 
 export default Map
+/* eslint-enable */
