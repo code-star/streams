@@ -1,23 +1,16 @@
-/* eslint no-console: 0 */
-import 'dotenv/config'
-import cors from 'cors'
-import bodyParser from 'body-parser'
-import express from 'express'
+const { ApolloServer } = require('apollo-server');
+const typeDefs = require('./schema');
+const StationAPI = require('./datasources/station');
+const resolvers = require('./resolvers');
 
-const app = express()
+const server = new ApolloServer({
+  typeDefs,
+  resolvers,
+  dataSources: () => ({
+    stationAPI: new StationAPI(),
+  })
+});
 
-app.use(cors())
-
-app.use(bodyParser.urlencoded({ extended: true }))
-
-app.use(bodyParser.json())
-
-app.get('/', (req, res) => {
-  res.send({ 'test': '123' })
-})
-
-const port = process.env.PORT || 3000
-
-app.listen(port, () =>
-  console.log(`Streams Server listening on port ${port}!`),
-)
+server.listen().then(({ url }) => {
+    console.log(`Server ready at ${url}`);
+});

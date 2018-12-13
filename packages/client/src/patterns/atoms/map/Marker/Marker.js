@@ -1,14 +1,14 @@
 import './Marker.scss'
 import React from 'react'
 import cx from 'classnames'
-import {string, bool} from 'prop-types'
+import { string, bool } from 'prop-types'
 
 const markerPosition = {
   position: 'absolute',
   width: 46,
   height: 59,
   left: -46 / 2,
-  top: -59
+  top: -59,
 }
 
 const Marker = ({ text, active, label }) => (
@@ -29,13 +29,13 @@ const Marker = ({ text, active, label }) => (
 Marker.propTypes = {
   text: string,
   label: bool,
-  active: bool
+  active: bool,
 }
 
 Marker.defaultProps = {
   text: '',
   label: false,
-  active: false
+  active: false,
 }
 
 export default Marker
