@@ -1,16 +1,15 @@
 import React from 'react'
-import { string, node } from 'prop-types'
+import { node } from 'prop-types'
 
 const style = {
-  'position': '-webkit-sticky',
   'position': 'sticky',
   'top': 0,
   'left': 0,
   'right': 0,
-  'zIndex': 101
+  'zIndex': 101,
 }
 
-const Header = ({ className, children }) => (
+const Header = ({ children }) => (
   <div className="bg-gray-dark" style={style}>
     <div className="main-nav d-flex flex-justify-between px-3 pl-md-4 pr-md-4 py-3 box-shadow bg-gray-dark Details js-details-container">
        <div className="d-flex flex-self-center flex-lg-auto mr-lg-2">
@@ -29,12 +28,10 @@ const Header = ({ className, children }) => (
 )
 
 Header.defaultProps = {
-  className: '',
   children: null,
 }
 
 Header.propTypes = {
-  className: string,
   children: node,
 }
 
