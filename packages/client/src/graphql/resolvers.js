@@ -1,7 +1,8 @@
-const { gql } = require('apollo-server')
+/* eslint import/prefer-default-export: 0 */
+import gql from 'graphql-tag'
 
-const typeDefs = gql`
-  type Query {
+export const typeDefs = gql`
+  extend type Query {
     stations(
       pageSize: Int
       after: String
@@ -9,19 +10,17 @@ const typeDefs = gql`
     station(id: String!): Station
   }
 
-  type StationConnection {
+  extend type StationConnection {
     cursor: String!
     hasMore: Boolean!
     stations: [Station]!
   }
 
-  type Station {
+  extend type Station {
     id: String!
     lat: Float!
     lng: Float!
     text: String!
     isFocussed: Boolean!
     isSelected: Boolean!
-  }
-`
-module.exports = typeDefs
+  }`

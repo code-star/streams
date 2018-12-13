@@ -1,10 +1,10 @@
 /* eslint-disable */
 import React from 'react'
-import { arrayOf, shape, number, string } from 'prop-types'
+import { arrayOf, shape, number, string, bool } from 'prop-types'
 import GoogleMapReact from 'google-map-react'
 import { fitBounds } from 'google-map-react/utils'
 import Marker from '../../atoms/map/Marker'
-import list from '../../../data/stations'
+import client from '../../../graphql/client'
 
 const K_MARGIN_TOP = 60
 const K_MARGIN_RIGHT = 30
@@ -17,8 +17,6 @@ const LONGITUDE = 'lng'
 class Map extends React.Component {
   constructor(props) {
     super(props)
-
-    const {lat, lng} = list[0]
 
     this.state = {
       center: undefined,
@@ -168,8 +166,9 @@ class Map extends React.Component {
   }
 
   render() {
-    const { initialCenter, initialZoom, apiKey, showLimit, items } = this.props;
+    const { initialZoom, apiKey, showLimit, items } = this.props;
     const { center, zoom } = this.state;
+    const initialCenter = {lat: items[0].lat, lng: items[0].lng}
 
     const markers = items.slice(0, showLimit).map((item, index) => {
         return (
@@ -208,10 +207,6 @@ class Map extends React.Component {
 }
 
 Map.propTypes = {
-  initialCenter: shape({
-    lat: number,
-    lng: number
-  }),
   initialZoom: number,
   apiKey: string,
   showLimit: number,
@@ -220,19 +215,17 @@ Map.propTypes = {
       id: string,
       lat: number,
       lng: number,
+      text: string,
+      isFocussed: bool,
+      isSelected: bool,
     })
   ),
 }
 
 Map.defaultProps = {
-  initialCenter: {
-    lat: list[0].lat,
-    lng: list[0].lng
-  },
   initialZoom: 11,
   apiKey: process.env.API_KEY,
   showLimit: 10,
-  items: list,
 }
 
 export default Map

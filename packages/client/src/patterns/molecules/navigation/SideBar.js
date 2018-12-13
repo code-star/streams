@@ -32,8 +32,4 @@ const SideBar = () => (
   </nav>
 )
 
-SideBar.defaultProps = {}
-
-SideBar.propTypes = {}
-
 export default SideBar

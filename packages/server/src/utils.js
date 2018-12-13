@@ -1,3 +1,4 @@
+/* eslint-disable */
 module.exports.paginateResults = ({
   after: cursor,
   pageSize = 20,
@@ -8,7 +9,7 @@ module.exports.paginateResults = ({
 
   if (!cursor) return results.slice(0, pageSize)
   const cursorIndex = results.findIndex(item => {
-    let itemCursor = item.cursor ? item.cursor : getCursor(item)
+    const itemCursor = item.cursor ? item.cursor : getCursor(item)
 
     return itemCursor ? cursor === itemCursor : false
   })
@@ -24,3 +25,4 @@ module.exports.paginateResults = ({
 
   results.slice(cursorIndex >= 0 ? cursorIndex + 1 : 0, cursorIndex >= 0)
 }
+/* eslint-enable */
