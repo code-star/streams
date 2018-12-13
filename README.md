@@ -36,6 +36,12 @@
 
 **⚠️ This project is a work in progress and is not ready for production use yet!**
 
+## Client
+- Apollo GraphQL Client running at https://streams.codestar.nl/
+
+## Server
+- Apollo GraphQL Server running at https://streams-server.herokuapp.com/
+
 ## License
 
 [MIT](./LICENSE) &copy; [CODE.STΛR](https://github.com/code-star)
