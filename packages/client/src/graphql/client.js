@@ -8,8 +8,7 @@ const cache = new InMemoryCache()
 const client = new ApolloClient({
   cache,
   link: new HttpLink({
-    // uri: 'https://streams-server.herokuapp.com/graphql',
-    uri: 'http://localhost:4000/graphql',
+    uri: process.env.SERVER_URL,
   }),
   typeDefs,
 })
