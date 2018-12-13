@@ -1,4 +1,4 @@
-const { paginateResults } = require('./utils');
+const { paginateResults } = require('./utils')
 
 module.exports = {
   Query: {
@@ -20,6 +20,6 @@ module.exports = {
             allStations[allStations.length - 1].cursor
           : false,
       }
-    }
-  }
+    },
+  },
 }
