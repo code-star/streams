@@ -1,8 +1,10 @@
 import React from 'react'
+import { Query } from 'react-apollo'
 import { Link } from 'react-router-dom'
 import Map from '../../patterns/molecules/map/Map'
 import { startPageRoute } from '../../routes'
 import Header from '../../patterns/molecules/navigation/Header'
+import { STATIONS } from '../../graphql/query'
 
 const DemoReactPage = () => (
   <div>
@@ -15,7 +17,9 @@ const DemoReactPage = () => (
               </Link>
           </div>
           <div className="border p-3">
-              <Map />
+            <Query query={STATIONS}>
+              {({ data }) => data.stations && data.stations.stations ? <Map items={data.stations.stations}/> : null}
+            </Query>
           </div>
         </div>
      </div>
