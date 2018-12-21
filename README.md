@@ -42,6 +42,65 @@
 ## Server
 - Apollo GraphQL Server running at https://streams-server.herokuapp.com/
 
+## Installation for local development
+
+Install project:
+```bash
+npm install
+```
+
+Install `client`:
+```bash
+cd packages/client
+npm install
+```
+
+Install `server`:
+```bash
+cd packages/server
+npm install
+```
+
+Test the project:
+```bash
+npm run ci
+```
+
+Before starting the server you need to create some `.env` files with the keys for the external libs:
+- For local development of the `client` create a file in `packages/client` called `.env.develop`
+- For the production release create a file in `packages/client` called `.env.release`
+- For local development of the `server` create a file in `packages/server` called `.env`
+
+Start the `server`
+```bash
+cd packages/server
+npm start
+```
+This will open a browser on http://localhost:4000/ with the GraphiQL editor. 
+You can try the following query:
+```graphql
+  query GetStations {
+    stations(pageSize: 10) {
+      stations {
+        id
+        lat
+        lng
+        text
+        isFocussed
+        isSelected
+      }
+    }
+  }
+```
+
+Start the client
+```bash
+cd packages/client
+npm start
+```
+This will open front-end app on http://localhost:8080/
+
+
 ## License
 
 [MIT](./LICENSE) &copy; [CODE.STΛR](https://github.com/code-star)
